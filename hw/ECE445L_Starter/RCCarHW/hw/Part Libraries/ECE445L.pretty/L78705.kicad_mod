@@ -1,0 +1,245 @@
+(footprint "L78705"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "3-Pin TO-220")
+	(tags "Integrated Circuit")
+	(property "Reference" "IC**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "ed199a1a-6154-4fd3-bbea-62feffa9bdac")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "L78705"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "9f52d457-65fb-462e-ac94-3cee96c4b97a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "42e130e0-e09f-4fc5-9995-97cf49c5a4de")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "808f275c-b108-420b-a1f8-23b29244deb3")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "93b06b5d-cb16-4004-8d33-be43c6310ac8")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.65 -3.07)
+		(end -2.65 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "133d56a4-3fd9-4dd2-ae90-5a90ae6f3ec8")
+	)
+	(fp_line
+		(start 7.75 -3.07)
+		(end -2.65 -3.07)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7cd60083-16b3-4c57-8d89-e7971ef66810")
+	)
+	(fp_line
+		(start 7.75 1.53)
+		(end 7.75 -3.07)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "16e3b430-1f8c-45b5-bc56-bf082a7beaae")
+	)
+	(fp_line
+		(start -2.9 -3.32)
+		(end 8 -3.32)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "903cf2ab-acdd-4b60-9e21-9c9df365f9da")
+	)
+	(fp_line
+		(start -2.9 1.78)
+		(end -2.9 -3.32)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "60c93551-4952-485a-996e-056564f62839")
+	)
+	(fp_line
+		(start 8 -3.32)
+		(end 8 1.78)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7c3687a1-2f1e-4a1f-8598-4ece5ab23997")
+	)
+	(fp_line
+		(start 8 1.78)
+		(end -2.9 1.78)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2512869d-9dbf-4775-90f8-979b42f9ca63")
+	)
+	(fp_line
+		(start -2.65 -3.07)
+		(end 7.75 -3.07)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6344d39f-b577-45b5-a3ed-2f8504992810")
+	)
+	(fp_line
+		(start -2.65 -1.795)
+		(end -1.375 -3.07)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "91184d3f-ee51-4cad-bc82-e4d66cf3f141")
+	)
+	(fp_line
+		(start -2.65 1.53)
+		(end -2.65 -3.07)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "cd8c76db-bc76-459e-857f-b5ff280722ab")
+	)
+	(fp_line
+		(start 7.75 -3.07)
+		(end 7.75 1.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c4fbf9a1-10a3-438f-897a-f239c2831d1c")
+	)
+	(fp_line
+		(start 7.75 1.53)
+		(end -2.65 1.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d52a0e61-50e2-4b68-9792-faadcf7226f8")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "564f1a94-0708-4961-8f92-af1cc6cab22f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.98 1.98)
+		(drill 1.32)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "9d7f60e4-4ee6-427f-b2a9-9581c2cf62ec")
+	)
+	(pad "2" thru_hole circle
+		(at 2.55 0)
+		(size 1.98 1.98)
+		(drill 1.32)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7d5ac53c-1b0f-4f1f-a519-80946632e3ad")
+	)
+	(pad "3" thru_hole circle
+		(at 5.1 0)
+		(size 1.98 1.98)
+		(drill 1.32)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4acfa20f-d360-4167-8bc9-f0bca772f100")
+	)
+	(model "L7805CV.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Part Libraries/L7805CV/3D/L7805CV.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

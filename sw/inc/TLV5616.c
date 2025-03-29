@@ -33,11 +33,20 @@
 // assumes bus clock is 80 MHz
 // inputs: initial voltage output (0 to 4095)
 // outputs:none
-void DAC_Init(uint16_t data){
-    // write this
-	  // Consider the following registers:
-	  // SYSCTL_RCGCSSI_R, SSI1_CR1_R, SSI1_CPSR_R, SSI1_CR0_R, SSI1_DR_R, SSI1_CR1_R
-
+void DAC_Init(void){
+    SYSCTL_RCGCSSI_R |= SYSCTL_RCGCSSI_R0;
+    SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R0;
+    while((SYSCTL_PRGPIO_R & SYSCTL_PRGPIO_R0) == 0) {}
+		GPIO_PORTA_AFSEL_R |= 0x2C;
+		GPIO_PORTA_DIR_R |= 0x40;
+		GPIO_PORTA_DEN_R |= 0x6C;
+		GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R & 0xFF0FF0FF) | 0x00202200;
+		SSI0_CR1_R &= ~SSI_CR1_SSE;
+    SSI0_CR1_R = 0;
+    SSI0_CC_R = SSI_CC_CS_SYSPLL;
+    SSI0_CPSR_R = 2;
+    SSI0_CR0_R = (15 << SSI_CR0_SCR_S) | SSI_CR0_FRF_MOTO | SSI_CR0_DSS_16;
+    SSI0_CR1_R |= SSI_CR1_SSE;
 }
 
 // --------------     DAC_Out   --------------------------------------------
@@ -45,9 +54,9 @@ void DAC_Init(uint16_t data){
 // inputs:  voltage output (0 to 4095)
 // 
 void DAC_Out(uint16_t code){
-    // write this
-    // Consider the following registers:
-	  // SSI1_SR_R, SSI1_DR_R
+    while((SSI0_SR_R & SSI_SR_TNF) == 0) {
+    }
+    SSI0_DR_R = code;
 }
 
 // --------------     DAC_OutNonBlocking   ------------------------------------

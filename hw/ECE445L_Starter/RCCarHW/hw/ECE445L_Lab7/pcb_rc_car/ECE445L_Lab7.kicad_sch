@@ -1,0 +1,222 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "69b823fd-c065-40ff-9bb9-c5835555f3eb")
+	(paper "A4")
+	(title_block
+		(title "ECE 445L Lab7")
+		(date "2025-01-13")
+		(rev "v1.0.0")
+		(company "The University of Texas at Austin")
+	)
+	(lib_symbols)
+	(text "RC Car"
+		(exclude_from_sim no)
+		(at 25.908 18.542 0)
+		(effects
+			(font
+				(face "Berlin Sans FB Demi")
+				(size 5.08 5.08)
+				(thickness 1.016)
+				(bold yes)
+			)
+		)
+		(uuid "8d2e4c21-ecc6-472f-bc5d-5dcb7290a207")
+	)
+	(sheet
+		(at 38.1 25.4)
+		(size 196.85 20.955)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 255 0 1.0000)
+		)
+		(uuid "120cc903-6d6c-4a77-ad9c-c9f63dede169")
+		(property "Sheetname" "Lab7_power"
+			(at 38.1 24.6884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Lab7_power.kicad_sch"
+			(at 38.1 46.9396 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ECE445L_Lab7"
+				(path "/69b823fd-c065-40ff-9bb9-c5835555f3eb"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 196.215 91.44)
+		(size 35.56 16.51)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 229 191 1.0000)
+		)
+		(uuid "9e7b1dfa-492f-407a-9f72-cee77954c346")
+		(property "Sheetname" "Lab7_wifi"
+			(at 196.215 90.7284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Lab7_wifi.kicad_sch"
+			(at 196.215 108.5346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ECE445L_Lab7"
+				(path "/69b823fd-c065-40ff-9bb9-c5835555f3eb"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 196.215 57.15)
+		(size 40.005 19.685)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 255 0 1.0000)
+		)
+		(uuid "a500a078-11dc-409b-bff9-a8c35e1dabf8")
+		(property "Sheetname" "Lab7_Output"
+			(at 196.215 56.4384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Lab7_Output.kicad_sch"
+			(at 196.215 77.4196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ECE445L_Lab7"
+				(path "/69b823fd-c065-40ff-9bb9-c5835555f3eb"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 104.775 74.295)
+		(size 45.72 21.59)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 255 255 1.0000)
+		)
+		(uuid "c4445928-c95f-4ef5-82c7-58ae1ba9c5bb")
+		(property "Sheetname" "Lab7_microcontroller"
+			(at 104.775 73.5834 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Lab7_microcontroller.kicad_sch"
+			(at 104.775 96.4696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ECE445L_Lab7"
+				(path "/69b823fd-c065-40ff-9bb9-c5835555f3eb"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 39.37 70.485)
+		(size 45.72 25.4)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 255 0 1.0000)
+		)
+		(uuid "e9432827-5ece-4de0-90fe-13c05c5c04a5")
+		(property "Sheetname" "Lab7_Input"
+			(at 39.37 69.7734 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Lab7_Input.kicad_sch"
+			(at 39.37 96.4696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ECE445L_Lab7"
+				(path "/69b823fd-c065-40ff-9bb9-c5835555f3eb"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

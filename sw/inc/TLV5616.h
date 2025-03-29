@@ -38,7 +38,8 @@
 // inputs: initial voltage output (0 to 4095)
 // outputs:none
 //
-void DAC_Init(uint16_t data);
+//void DAC_Init(uint16_t data);
+void DAC_Init(void);
 
 // --------------      DAC_Out     --------------------------------------------
 //
@@ -47,6 +48,7 @@ void DAC_Init(uint16_t data);
 // outputs: none
 //
 void DAC_Out(uint16_t code);
+#define DAC_Out_nowait(code) SSI0_DR_R = (code)
 
    // -----------------   DAC_OutNonBlocking      --------------------------------
 //
