@@ -4,12 +4,13 @@
 ".\objects\pll.o"
 ".\objects\timer0a.o"
 ".\objects\startup.o"
-".\objects\adc.o"
 ".\objects\timer1a.o"
 ".\objects\adct0atrigger.o"
 ".\objects\uart.o"
 ".\objects\paddles.o"
-".\objects\unified_port_init.o"
+".\objects\uart2.o"
+".\objects\timer2a.o"
+".\objects\adc.o"
 --strict --scatter ".\Objects\Lab7BPrep.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

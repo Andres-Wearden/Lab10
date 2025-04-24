@@ -2,7 +2,7 @@
 #define __ADC__
 #include <stdint.h>
 void ADC_Init(void);
-void ProcessADCData(uint32_t data);
+void ProcessADCData(uint32_t data1, uint32_t data2, uint32_t data3);
 extern uint32_t adcValue;
 extern uint32_t previousADC;
 extern uint32_t noiseSum;

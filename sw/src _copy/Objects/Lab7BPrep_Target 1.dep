@@ -1,0 +1,44 @@
+Dependencies for Project 'Lab7BPrep', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6190000::V6.19::ARMCLANG
+F (.\main.c)(0x6809B4E6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/main.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\tm4c123gh6pm.h)(0x67D32611)
+I (..\inc\PLL.h)(0x67B4E952)
+I (..\inc\UART0int.h)(0x67B4E952)
+I (..\inc\CortexM.h)(0x67B4E952)
+I (PWMIND.h)(0x68099A05)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63890DE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x63890DE8)
+F (.\Timers.c)(0x67E1F9C0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/timers.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\tm4c123gh6pm.h)(0x67D32611)
+I (Timers.h)(0x67E1E497)
+I (..\inc\Timer0A.h)(0x67B4E952)
+I (..\inc\Timer1A.h)(0x67B4E952)
+F (.\Timers.h)(0x67E1E497)()
+F (..\inc\PLL.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/pll.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\..\inc\PLL.h)(0x67B4E952)
+I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
+F (..\inc\Timer0A.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/timer0a.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
+I (..\inc\..\inc\CortexM.h)(0x67B4E952)
+F (..\inc\startup.s)(0x67B4E952)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"TM4C123GH6PM SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup.o)
+F (..\inc\Timer1A.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/timer1a.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
+F (..\inc\UART.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/uart.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63890DE8)
+I (..\inc\..\inc\UART.h)(0x67B4E952)
+I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
+F (.\Paddles.c)(0x67E2C4FF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/paddles.o -MD)
+F (.\Paddles.h)(0x67E2C6D4)()
+F (.\PWMIND.c)(0x68099A05)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/pwmind.o -MD)
+I (..\inc\PLL.h)(0x67B4E952)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
+I (..\inc\tm4c123gh6pm.h)(0x67D32611)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63890DE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x63890DE8)
+F (.\PWMIND.h)(0x68099A05)()

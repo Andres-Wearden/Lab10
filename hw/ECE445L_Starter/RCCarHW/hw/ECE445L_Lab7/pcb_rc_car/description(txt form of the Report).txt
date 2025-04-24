@@ -1,9 +1,0 @@
-Report on RC Car PCB:
-
-The PCB (placed within the ECE445L_Lab7 folder) is for the RC car that will be controlled by the pedals and steering mechanism. The PCB has the following components:
-Power – A 9V battery is stepped down to 5V using an LDO. Furthermore, the 9V battery is regulated using its own LDO.
-Microcontroller – The 5V powers a TM4C microcontroller and a Launchpad. The Launchpad is present as a redundancy in case the microcontroller chip fails.
-Wifi-Module – An ESP32 is used to communicate between the steering/pedals and the RC car as per recommendations from TAs. An ESP32 SMD is used and is based on the ESP32-Pico Dev Kit (link here). An actual ESP32 board is added as a redundancy. The ESP32 is set up to communicate via UART and SPI with the TM4C (flexibility is present).
-Input – A hall effect sensor is present and is connected directly to the TM4C. Data will be sent to the ESP32 to be broadcast to the steering/pedal module.
-Output – Two DC motors (9V Adafruit 711 Motors) are being used to operate the car and follow the MOSFET based schematic as shown in class slides. Furthermore, a servo is being used to control steering. All motors are being controlled with the TM4C. The ESP32 sends information about duty cycles to the TM4C. This information is broadcast from the steering/pedal module. Please look at this carefully as I want to confirm everything is correct. Thank you.
-

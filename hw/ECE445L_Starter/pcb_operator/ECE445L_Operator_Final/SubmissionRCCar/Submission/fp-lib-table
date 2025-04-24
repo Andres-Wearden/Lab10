@@ -1,0 +1,8 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ECE445L_Lab7")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/ECE445L_Lab7.pretty")(options "")(descr ""))
+  (lib (name "ECE445L_Starter")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/ECE445L_Starter.pretty")(options "")(descr ""))
+  (lib (name "Part Libraries")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Part Libraries.pretty")(options "")(descr ""))
+  (lib (name "ECE445L")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Part Libraries/ECE445L.pretty")(options "")(descr ""))
+  (lib (name "ESP32-BOARD")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Part Libraries/ESP32-BOARD.pretty")(options "")(descr ""))
+)

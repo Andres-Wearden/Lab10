@@ -1,0 +1,4 @@
+./objects/pwmind.o: PWMIND.c ..\inc\PLL.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\inc\tm4c123gh6pm.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h

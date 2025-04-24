@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Lab7")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Lab7.kicad_sym")(options "")(descr ""))
+  (lib (name "TM4C123GH6PMIR")(type "KiCad")(uri "C:/Users/Aryan/OneDrive/ECE 445L/ece-445l-lab-7-and-10-shrikar-andres-nikhil-aryan/hw/Part Libraries/symbols/TM4C123GH6PMIR.kicad_sym")(options "")(descr ""))
+)

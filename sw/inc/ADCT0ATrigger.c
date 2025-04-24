@@ -100,14 +100,14 @@
 // SS3 1st sample source: programmable using variable 'channelNum' [0:11]
 // SS3 interrupts: enabled and promoted to controller
 
-void (*ADCTask)(uint32_t);    // user function to be called when new ADC data ready
-void dummyADC(uint32_t data){
+void (*ADCTask)(uint32_t, uint32_t, uint32_t);    // user function to be called when new ADC data ready
+void dummyADC(uint32_t, uint32_t, uint32_t){
 };
 
 // Sample the ADC using Timer0 hardware triggering using SS0
 // this function initiates the sampling, does not wait for completion
 // task is user function to process or send data
-int ADC0_InitTimer0ATriggerSeq0(uint32_t channelNum, uint32_t fs, void(*task)(uint32_t)){
+int ADC0_InitTimer0ATriggerSeq0(uint32_t channelNum, uint32_t fs, void(*task)(uint32_t, uint32_t, uint32_t)){
   volatile uint32_t delay;
 uint32_t period;  
   // channelNum must be 0-11 (inclusive) corresponding to channel 0 through 11
@@ -233,8 +233,12 @@ uint32_t period;
   ADC0_SSPRI_R = 0x3210;    // sequencer 0 is highest, sequencer 3 is lowest
   ADC0_ACTSS_R &= ~0x01;    // disable sample sequencer 0
   ADC0_EMUX_R = (ADC0_EMUX_R&0xFFFFFFF0)+0x0005; // timer trigger event
-  ADC0_SSMUX0_R = channelNum;
-  ADC0_SSCTL0_R = 0x06;          // set flag and end                       
+//  ADC0_SSMUX0_R = channelNum;	
+//  ADC0_SSCTL0_R = 0x06;          // set flag and end  
+
+	ADC0_SSMUX0_R = (1<<0) | (2<<4) | (3<<8); 
+	ADC0_SSCTL0_R = 0x0600;
+
   ADC0_IM_R |= 0x01;             // enable SS0 interrupts
   ADC0_ACTSS_R |= 0x01;          // enable sample sequencer 0
   NVIC_PRI3_R = (NVIC_PRI3_R&0xFF00FFFF)|0x00400000; // bits 21-23
@@ -243,8 +247,15 @@ uint32_t period;
 }
 void ADC0Seq0_Handler(void){ uint32_t data;
   ADC0_ISC_R = 0x01;     // acknowledge ADC sequence 0 completion
-  data = ADC0_SSFIFO0_R&0xFFF;
-  (*ADCTask)(data);        // execute user task
+//  data = ADC0_SSFIFO0_R&0xFFF;
+//  (*ADCTask)(data);        // execute user task
+	
+	uint32_t data0, data1, data2;
+	data0 = ADC0_SSFIFO0_R & 0xFFF;  // PE2
+	data1 = ADC0_SSFIFO0_R & 0xFFF;  // PE1
+	data2 = ADC0_SSFIFO0_R & 0xFFF;  // PE0
+	(*ADCTask)(data0, data1, data2);  // You’ll need to change your ADCTask function prototype to take 3 values
+
 }
 
 void ADC0_InitTimer0ATriggerSeq3PD3(uint32_t period){
@@ -283,4 +294,3 @@ void ADC0Seq3_Handler(void){
   ADC0_ISC_R = 0x08;         // acknowledge ADC sequence 3 completion
   PD3data = ADC0_SSFIFO3_R;  // pass to foreground
 }
-

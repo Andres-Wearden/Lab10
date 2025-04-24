@@ -416,16 +416,6 @@
               <FilePath>..\inc\startup.s</FilePath>
             </File>
             <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ADC.h</FilePath>
-            </File>
-            <File>
               <FileName>Timer1A.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\inc\Timer1A.c</FilePath>
@@ -451,9 +441,24 @@
               <FilePath>.\Paddles.h</FilePath>
             </File>
             <File>
-              <FileName>Unified_Port_Init.c</FileName>
+              <FileName>UART2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\inc\Unified_Port_Init.c</FilePath>
+              <FilePath>..\inc\UART2.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer2A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Timer2A.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ADC.c</FilePath>
             </File>
           </Files>
         </Group>

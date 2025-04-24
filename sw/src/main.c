@@ -6,108 +6,76 @@
 #include "ADC.h"
 #include "../inc/ADCT0ATrigger.h"
 #include "../inc/UART.h"
-#include "../inc/Unified_Port_Init.h"
-uint32_t gearShift = 0;
 
-#define BUFSIZE 1000
-uint32_t TimeBuf[BUFSIZE]; // in bus cycles
-uint32_t DataBuf[BUFSIZE]; // 0 to 4095 assuming constant analog input
-volatile uint32_t Num;     // index from 0 to BUFSIZE-1
+extern uint32_t adcValue;
+extern uint32_t adcValue2;
+extern uint32_t adcValue3;
 
-// time jitter variables
-uint32_t MinT;    // minimum(TimeBuf[i-1] – TimeBuf[i]) for i equals 1 to BUFSIZE-1
-uint32_t MaxT;    // maximum(TimeBuf[i-1] – TimeBuf[i]) for i equals 1 to BUFSIZE-1
-uint32_t Jitter;  // MaxT – MinT (in bus cycles)
-uint16_t Periods[256];  // histogram of times between ADC triggers, optional
+void UART1_Init(void){
+    SYSCTL_RCGCUART_R |= (1<<1);            // enable UART1 clock
+    SYSCTL_RCGCGPIO_R |= (1<<1);            // enable Port B clock
+    while((SYSCTL_PRGPIO_R & (1<<1)) == 0){}
 
-// SNR variables
-uint32_t Averaging; // 1,2,4,8,16,32, or 64 to student CLT
-uint32_t Vmin, Vmax, PMFmax;
-int32_t Signal,Noise,SNR,Distance;
-uint16_t PMF[100];  // histogram of ADC samples
-uint32_t ADCvalue;
+    // PB0 = U1Rx, PB1 = U1Tx
+    GPIO_PORTB_AFSEL_R |= 0x03;
+    GPIO_PORTB_PCTL_R  = (GPIO_PORTB_PCTL_R & ~0xFF)
+                       | (1<<0)   // PB0 ? U1RX
+                       | (1<<4);  // PB1 ? U1TX
+    GPIO_PORTB_DEN_R   |= 0x03;
+    GPIO_PORTB_DIR_R   |=  (1<<1);
+    GPIO_PORTB_DIR_R   &= ~(1<<0);
 
-uint32_t sqrt2(uint32_t s){ int n; // loop counter
-uint32_t t;            // t*t will become s
-  t = s/16+1;          // initial guess
-  for(n = 16; n; --n){ // will finish
-    t = ((t*t+s)/t)/2;
-  }
-  return t;
+    // 115200, 8-N-1 @ 80 MHz
+    UART1_CTL_R &= ~UART_CTL_UARTEN;
+    UART1_CC_R   = 0;
+    UART1_IBRD_R = 43;
+    UART1_FBRD_R = 26;
+    UART1_LCRH_R = (3<<5);
+    UART1_CTL_R |= (UART_CTL_UARTEN|UART_CTL_TXE);
 }
 
-void CalculateSNR(void){
-  Signal = 0;
-  Noise = 0;
-  SNR = 0;
-  for(int i = 0; i < BUFSIZE; i++){
-    Signal += DataBuf[i];
-  }
-  Signal = Signal / BUFSIZE;
-  
-  uint32_t sumSqDiff = 0;
-  for(int i = 0; i < BUFSIZE; i++){
-    int32_t diff = DataBuf[i] - Signal;
-    sumSqDiff += diff * diff;
-  }
-  // Using sample variance (divide by BUFSIZE - 1)
-  Noise = sumSqDiff / (BUFSIZE - 1);
-  Noise = sqrt2(Noise);
-	UART_OutString("\r\nNoise = ");
-	UART_OutUDec(Noise);
-  SNR = Signal / (Noise ? Noise : 1);  // avoid division by zero
+// send a single character
+void UART1_SendChar(char c){
+    while(UART1_FR_R & UART_FR_TXFF){}
+    UART1_DR_R = c;
+}
+
+// send a 16-bit word over UART1 (MSB first)
+void UART1_Send16(uint16_t value){
+    // high byte
+    while(UART1_FR_R & UART_FR_TXFF){}
+    UART1_DR_R = (value >> 8) & 0xFF;
+    // low byte
+    while(UART1_FR_R & UART_FR_TXFF){}
+    UART1_DR_R = value & 0xFF;
 }
 
 int main(void){
     DisableInterrupts();
     PLL_Init(Bus80MHz);
-    Heartbeat_Init(5000000, 7);
-    ADC0_InitTimer0ATriggerSeq0(3, 1000, ProcessADCData);
+    ADC0_InitTimer0ATriggerSeq0(0, 1000, ProcessADCData);  // configure ADC0 if not already
     UART_Init();
-    Port_C_Init();
-		ADC0_SAC_R = 0x06;
+		UART1_Init();
     EnableInterrupts();
-    uint32_t noiseLevel = 0;
 
     while(1){
-        // Print ADC value
-				UART_OutString("ADCValue");
-        UART_OutUDec(adcValue);
-        UART_OutString("\r\n");
-
-        // Print current gear shift
-        UART_OutString("Current Gear Shift: ");
-        UART_OutUDec(gearShift);
-        UART_OutString("\r\n");
-
-//        while(Num < BUFSIZE){ 
-//				}
-				
-				Num = 0;
-				
-				CalculateSNR();
-				
-				UART_OutString("\r\nSNR = ");
-				UART_OutUDec(SNR);
-				
-				
-
-        // Process gear shift inputs (same as your code)
-        if((GPIO_PORTC_DATA_R & 0x10) == 0x00){
-            while((GPIO_PORTC_DATA_R & 0x10) == 0x00){}
-            if(gearShift == 5){
-                gearShift = 5;
-            }else{
-                gearShift++;
-            }
-        } else if ((GPIO_PORTC_DATA_R & 0x20) == 0x00){
-            while((GPIO_PORTC_DATA_R & 0x20) == 0x00){}
-            if(gearShift == 0){
-                gearShift = 0;
-            }else{
-                gearShift--;
-            }
-        }
+				UART_OutString("ADCValue:          ");
+				UART_OutUDec(adcValue);
+				UART_OutString("\r\n");
+			
+				UART_OutString("ADCValue2:          ");
+				UART_OutUDec(adcValue2);
+				UART_OutString("\r\n");
+			
+				UART_OutString("ADCValue3:          ");
+				UART_OutUDec(adcValue3);
+				UART_OutString("\r\n");
+        // Mask each ADC value to 12 bits and send them sequentially
+        UART1_Send16((uint16_t)(adcValue  & 0x0FFF));
+        UART1_Send16((uint16_t)(adcValue2 & 0x0FFF));
+        UART1_Send16((uint16_t)(adcValue3 & 0x0FFF));
+        
+        // small pause between bursts (adjust as needed)
+        for(volatile int i = 0; i < 500000; i++);
     }
 }
-

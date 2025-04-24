@@ -1,0 +1,879 @@
+(kicad_pcb
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(general
+		(thickness 1.6)
+		(legacy_teardrops no)
+	)
+	(paper "A4")
+	(title_block
+		(title "ECE 445L Baseline Project")
+		(date "2024-08-07")
+		(rev "v1.0.1")
+		(company "The University of Texas at Austin")
+	)
+	(layers
+		(0 "F.Cu" signal)
+		(31 "B.Cu" signal)
+		(32 "B.Adhes" user "B.Adhesive")
+		(33 "F.Adhes" user "F.Adhesive")
+		(34 "B.Paste" user)
+		(35 "F.Paste" user)
+		(36 "B.SilkS" user "B.Silkscreen")
+		(37 "F.SilkS" user "F.Silkscreen")
+		(38 "B.Mask" user)
+		(39 "F.Mask" user)
+		(40 "Dwgs.User" user "User.Drawings")
+		(41 "Cmts.User" user "User.Comments")
+		(42 "Eco1.User" user "User.Eco1")
+		(43 "Eco2.User" user "User.Eco2")
+		(44 "Edge.Cuts" user)
+		(45 "Margin" user)
+		(46 "B.CrtYd" user "B.Courtyard")
+		(47 "F.CrtYd" user "F.Courtyard")
+		(48 "B.Fab" user)
+		(49 "F.Fab" user)
+		(50 "User.1" user)
+		(51 "User.2" user)
+		(52 "User.3" user)
+		(53 "User.4" user)
+		(54 "User.5" user)
+		(55 "User.6" user)
+		(56 "User.7" user)
+		(57 "User.8" user)
+		(58 "User.9" user)
+	)
+	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Paste"
+				(type "Top Solder Paste")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "core")
+				(thickness 1.51)
+				(material "FR4")
+				(epsilon_r 4.5)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "B.Paste"
+				(type "Bottom Solder Paste")
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "None")
+			(dielectric_constraints no)
+		)
+		(pad_to_mask_clearance 0)
+		(allow_soldermask_bridges_in_footprints no)
+		(pcbplotparams
+			(layerselection 0x00010fc_ffffffff)
+			(plot_on_all_layers_selection 0x0000000_00000000)
+			(disableapertmacros no)
+			(usegerberextensions no)
+			(usegerberattributes yes)
+			(usegerberadvancedattributes yes)
+			(creategerberjobfile yes)
+			(dashed_line_dash_ratio 12.000000)
+			(dashed_line_gap_ratio 3.000000)
+			(svgprecision 4)
+			(plotframeref no)
+			(viasonmask no)
+			(mode 1)
+			(useauxorigin no)
+			(hpglpennumber 1)
+			(hpglpenspeed 20)
+			(hpglpendiameter 15.000000)
+			(pdf_front_fp_property_popups yes)
+			(pdf_back_fp_property_popups yes)
+			(dxfpolygonmode yes)
+			(dxfimperialunits yes)
+			(dxfusepcbnewfont yes)
+			(psnegative no)
+			(psa4output no)
+			(plotreference yes)
+			(plotvalue yes)
+			(plotfptext yes)
+			(plotinvisibletext no)
+			(sketchpadsonfab no)
+			(subtractmaskfromsilk no)
+			(outputformat 1)
+			(mirror no)
+			(drillshape 1)
+			(scaleselection 1)
+			(outputdirectory "")
+		)
+	)
+	(net 0 "")
+	(net 1 "unconnected-(H1-Hole-Pad1)")
+	(net 2 "unconnected-(H2-Hole-Pad1)")
+	(net 3 "unconnected-(H3-Hole-Pad1)")
+	(net 4 "unconnected-(H4-Hole-Pad1)")
+	(footprint ""
+		(layer "F.Cu")
+		(uuid "1354177d-ab1a-4a3f-81d5-c0b006faf863")
+		(at 43.5 132.75)
+		(property "Reference" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "4838e161-3825-49b1-b863-adf0b3e78b9e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "9da28c3c-dad0-4a07-aa1a-676c5e1bc7eb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fbf2ceb6-ee50-4658-8fd7-9f38d9a1833d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "06d63031-3e44-45ba-8460-f670624b1b53")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5f2c9a9b-4b3b-4358-80f4-4c3e445e03ea")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "unconnected-(H1-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "6aa605e9-06cc-44c8-8e7a-2dce65748c65")
+		)
+	)
+	(footprint ""
+		(layer "F.Cu")
+		(uuid "3e02174e-ddc9-4cf7-aacb-4e18dcdecf52")
+		(at 200 26)
+		(property "Reference" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "41662b78-d8f2-409c-8735-53c9b90cb49e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "bb040c93-8939-4ae5-b51f-de291386d931")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "771cad72-55ca-44c5-baea-b81cb4ef3b8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fa86e4ea-2f3b-4ac5-b787-639a85c1c3f7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c1c43716-f9bf-4146-867d-3c6cea59e0ed")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "unconnected-(H3-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "3ff87e85-3a06-42f0-b304-3a0ff2f90953")
+		)
+	)
+	(footprint ""
+		(layer "F.Cu")
+		(uuid "3ef0ee85-785e-4480-944a-65040d6f371a")
+		(at 200 132.75)
+		(property "Reference" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "17b99ed4-0955-44b2-888f-bfe394070054")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "54efcb7c-63bc-4e23-88dc-ddd553c23e6c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d89acc8a-2162-4ab5-a8f6-7dc473d67d9a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5833594b-560e-4f3f-8bd6-26c0efb0575c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "69d9ef7a-2402-4f5f-9d02-12187f42659b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "unconnected-(H4-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "48f44f4a-e4f4-4ad6-a181-343a5de6bd09")
+		)
+	)
+	(footprint "ECE445L:MountingHole_4_40"
+		(layer "F.Cu")
+		(uuid "56b534af-9962-43a7-bcde-62352a472df2")
+		(at 200 26)
+		(descr "Mounting Hole 0.125in")
+		(tags "mounting hole 0.125in 4_40")
+		(property "Reference" "H3"
+			(at -3 -2.25 0)
+			(layer "F.SilkS")
+			(uuid "d9bd294c-056f-42b5-8f61-d82fa18a4050")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(uuid "d83511aa-242c-45a4-8cf4-a5edc2f9f60f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "ECE445L:MountingHole_4_40"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b1f4c64a-ec80-4cd4-90cb-b3b926fe5afa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6a8048a-a2cc-4ae2-b14a-6defff1f74c8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Drill hole for 4-40 screw"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d69bae6a-0617-4709-b0e4-d09ff131a9a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files)
+		(fp_circle
+			(center 0 0)
+			(end 2.286 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "240eaf41-e3a7-48d0-bb37-b2b68ad3f469")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.54 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "601715c7-6ce8-4138-afdc-7c0e47771972")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "2e90f56a-8572-4ad1-b10c-4909130b70dd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "unconnected-(H3-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "a29b5fbc-e4e2-44f6-8a0c-342fcd60ee2d")
+		)
+	)
+	(footprint "ECE445L:MountingHole_4_40"
+		(layer "F.Cu")
+		(uuid "786bf215-0603-4e5d-85bc-fb0abc6929e5")
+		(at 200 132.75)
+		(descr "Mounting Hole 0.125in")
+		(tags "mounting hole 0.125in 4_40")
+		(property "Reference" "H4"
+			(at 5.715 0 0)
+			(layer "F.SilkS")
+			(uuid "b398612f-ef49-4165-91fb-da3a1fa1b485")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(uuid "9d3a65c5-208a-468f-b595-d445d69b305a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "ECE445L:MountingHole_4_40"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "de597c29-5785-4ab0-97dd-94493f91b685")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0922c490-ec69-4f63-8856-be33397ec5ab")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Drill hole for 4-40 screw"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0cc566c4-6b56-4723-b7d3-5d4e1825144e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files)
+		(fp_circle
+			(center 0 0)
+			(end 2.286 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "f38dcc5d-45df-4c4f-822c-a1d3c32177f7")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.54 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "9cac515f-7880-4097-94ac-d43045d641ad")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "e086a382-708d-45b3-a0cd-757dd5c7cc53")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "unconnected-(H4-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "18380643-38bc-4902-b948-bfcac0400db4")
+		)
+	)
+	(footprint "ECE445L:MountingHole_4_40"
+		(layer "F.Cu")
+		(uuid "b7e4a177-29bc-494f-bff2-11435dae08b4")
+		(at 43.5 26)
+		(descr "Mounting Hole 0.125in")
+		(tags "mounting hole 0.125in 4_40")
+		(property "Reference" "H2"
+			(at 0 -4.445 0)
+			(layer "F.SilkS")
+			(uuid "aa435b68-e1af-4352-ac6a-64c35d2c4bcd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(uuid "57c3b08c-0861-4b5e-b319-a30e74f1b1b5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "ECE445L:MountingHole_4_40"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "997e1fb8-c4c8-4da6-97fc-847827b9d004")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85d1583c-7a74-4439-aa42-ea8f0c096b25")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Drill hole for 4-40 screw"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "70969391-972b-4c69-9a42-e65027a00e9a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files)
+		(fp_circle
+			(center 0 0)
+			(end 2.286 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "1dc775c5-0e59-40c5-9baa-a7f7fa6f8e20")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.54 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "b0d9823c-480d-423b-acd3-2b1d617d093f")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "046f53c3-91dd-460e-b57a-e5774c1bc6cc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "unconnected-(H2-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "062e4dfa-b945-4fd4-aabc-ec0db092a2e7")
+		)
+	)
+	(footprint "ECE445L:MountingHole_4_40"
+		(layer "F.Cu")
+		(uuid "c30c3820-5578-4d01-8bb5-6c006d654c6f")
+		(at 43.5 132.75)
+		(descr "Mounting Hole 0.125in")
+		(tags "mounting hole 0.125in 4_40")
+		(property "Reference" "H1"
+			(at -3.175 5.33 0)
+			(layer "F.SilkS")
+			(uuid "a80f8cb3-0f21-452d-8be6-f99b2d84d72b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(uuid "edf9cc8a-1dac-4e3c-8230-9336e65e643e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "ECE445L:MountingHole_4_40"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "229d23e5-2024-4f94-b555-fb1a24819efc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "964db630-ebbe-4262-953d-a31b520d1616")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Drill hole for 4-40 screw"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5413ec2f-7d9a-4556-85d6-018f9ba90dd3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files)
+		(fp_circle
+			(center 0 0)
+			(end 2.286 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "bfd6eeaa-c7e2-4fe0-9739-2824f8b34058")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.54 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "5c3daafd-b963-4884-b085-b8dab61794d1")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "034f2329-d367-4d69-9dea-5d091b156071")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "unconnected-(H1-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "073283ed-7622-4ea6-a07d-48049ca9b272")
+		)
+	)
+	(footprint ""
+		(layer "F.Cu")
+		(uuid "da9324f9-9592-44bb-be1f-b55e5e0c80c0")
+		(at 43.5 26)
+		(property "Reference" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "d6b18134-51f3-4afd-8d9d-4ded2db510ca")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "7209e9cd-f44c-44b2-b69e-a253aa03c51d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6837cf39-f854-4582-87c0-f11e73cea82e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "821b3f90-68bc-43fc-89cc-12e7b7002a44")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "403944f4-6f67-4862-a0a8-12238a3e0337")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 4.318 4.318)
+			(drill 3.175)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "unconnected-(H2-Hole-Pad1)")
+			(pinfunction "Hole")
+			(pintype "power_in+no_connect")
+			(uuid "b0318925-cee5-4a4f-925e-630fd49fb9e8")
+		)
+	)
+	(gr_rect
+		(start 39 22.25)
+		(end 203.25 137)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "9c7ddec9-0006-4780-9a1a-d5a7c9e733c0")
+	)
+)
