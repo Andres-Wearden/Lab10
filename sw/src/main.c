@@ -1,15 +1,16 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/PLL.h"
-#include "Timers.h"
-#include "../inc/CortexM.h"
+#include "../inc/UART.h"
 #include "ADC.h"
 #include "../inc/ADCT0ATrigger.h"
-#include "../inc/UART.h"
+#include "../inc/CortexM.h"
 
 extern uint32_t adcValue;
 extern uint32_t adcValue2;
 extern uint32_t adcValue3;
+
+#define AVG_SAMPLES 16  // increase this for more smoothing
 
 void UART1_Init(void){
     SYSCTL_RCGCUART_R |= (1<<1);            // enable UART1 clock
@@ -25,27 +26,20 @@ void UART1_Init(void){
     GPIO_PORTB_DIR_R   |=  (1<<1);
     GPIO_PORTB_DIR_R   &= ~(1<<0);
 
-    // 115200, 8-N-1 @ 80 MHz
+    // 115200 baud, 8-N-1 @ 80 MHz
     UART1_CTL_R &= ~UART_CTL_UARTEN;
-    UART1_CC_R   = 0;
-    UART1_IBRD_R = 43;
-    UART1_FBRD_R = 26;
+    UART1_CC_R   = 0;    // system clock
+    UART1_IBRD_R = 43;   // int(80e6/(16×115200))
+    UART1_FBRD_R = 26;   // frac(.40×64 + .5)
     UART1_LCRH_R = (3<<5);
-    UART1_CTL_R |= (UART_CTL_UARTEN|UART_CTL_TXE);
+    UART1_CTL_R |= (UART_CTL_UARTEN | UART_CTL_TXE);
 }
 
-// send a single character
-void UART1_SendChar(char c){
-    while(UART1_FR_R & UART_FR_TXFF){}
-    UART1_DR_R = c;
-}
-
-// send a 16-bit word over UART1 (MSB first)
 void UART1_Send16(uint16_t value){
-    // high byte
+    // send high byte
     while(UART1_FR_R & UART_FR_TXFF){}
     UART1_DR_R = (value >> 8) & 0xFF;
-    // low byte
+    // send low byte
     while(UART1_FR_R & UART_FR_TXFF){}
     UART1_DR_R = value & 0xFF;
 }
@@ -53,29 +47,43 @@ void UART1_Send16(uint16_t value){
 int main(void){
     DisableInterrupts();
     PLL_Init(Bus80MHz);
-    ADC0_InitTimer0ATriggerSeq0(0, 1000, ProcessADCData);  // configure ADC0 if not already
-    UART_Init();
-		UART1_Init();
+//    ADC0_InitTimer0ATriggerSeq0(0, 1000, ProcessADCData); // AIN0
+//    ADC0_InitTimer0ATriggerSeq0(1, 1000, ProcessADCData); // AIN1
+    ADC0_InitTimer0ATriggerSeq0(3, 1000, ProcessADCData); // AIN3
+    UART_Init();   // for debug over UART0
+    UART1_Init();  // TX averaged data on UART1
     EnableInterrupts();
 
+    uint32_t sum1 = 0, sum2 = 0, sum3 = 0;
+    uint32_t count = 0;
+
     while(1){
-				UART_OutString("ADCValue:          ");
-				UART_OutUDec(adcValue);
-				UART_OutString("\r\n");
-			
-				UART_OutString("ADCValue2:          ");
-				UART_OutUDec(adcValue2);
-				UART_OutString("\r\n");
-			
-				UART_OutString("ADCValue3:          ");
-				UART_OutUDec(adcValue3);
-				UART_OutString("\r\n");
-        // Mask each ADC value to 12 bits and send them sequentially
-        UART1_Send16((uint16_t)(adcValue  & 0x0FFF));
-        UART1_Send16((uint16_t)(adcValue2 & 0x0FFF));
-        UART1_Send16((uint16_t)(adcValue3 & 0x0FFF));
-        
-        // small pause between bursts (adjust as needed)
-        for(volatile int i = 0; i < 500000; i++);
+        // accumulate latest ADC readings
+        sum1 += (adcValue  & 0x0FFF);
+        sum2 += (adcValue2 & 0x0FFF);
+        sum3 += (adcValue3 & 0x0FFF);
+        count++;
+
+        if(count >= AVG_SAMPLES){
+            // compute averaged values
+            uint16_t avg1 = sum1 / AVG_SAMPLES;
+            uint16_t avg2 = sum2 / AVG_SAMPLES;
+            uint16_t avg3 = sum3 / AVG_SAMPLES;
+
+            // optional: debug print to console
+            UART_OutString("Avg ADCs: ");
+            UART_OutUDec(avg1); UART_OutString(", ");
+            UART_OutUDec(avg2); UART_OutString(", ");
+            UART_OutUDec(avg3); UART_OutString("\r\n");
+
+            // send each 12-bit average over UART1
+            UART1_Send16(avg1);
+            UART1_Send16(avg2);
+            UART1_Send16(avg3);
+
+            // reset for next block
+            sum1 = sum2 = sum3 = 0;
+            count = 0;
+        }
     }
 }
