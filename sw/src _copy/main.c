@@ -7,7 +7,7 @@
 
 #define AVG_SAMPLES 1  // number of readings to average
 
-uint16_t motor_duty = 10;
+uint16_t motor_duty = 160;
 
 //——— Port F (PF4) switch init —————————————————————————
 void PortF_Init(void){
@@ -24,26 +24,52 @@ void PortF_Init(void){
 }
 
 //——— UART2 helpers on PD6/PD7 ——————————————————————————
-void UART2_Init(void){
-    SYSCTL_RCGCUART_R |= (1<<2);
-    SYSCTL_RCGCGPIO_R |= (1<<3);
-    while((SYSCTL_PRGPIO_R & (1<<3)) == 0){}
-
-    // PD6 = U2Rx, PD7 = U2Tx
-    GPIO_PORTD_AFSEL_R |= (1<<6)|(1<<7);
-    GPIO_PORTD_PCTL_R  = (GPIO_PORTD_PCTL_R & ~0xFF000000)
-                       | (1<<24)  // PD6 ? U2RX
-                       | (1<<28); // PD7 ? U2TX
-    GPIO_PORTD_DEN_R   |= (1<<6)|(1<<7);
-    GPIO_PORTD_DIR_R   |=  (1<<7);  // PD7 output
-    GPIO_PORTD_DIR_R   &= ~(1<<6);  // PD6 input
-
-    UART2_CTL_R &= ~UART_CTL_UARTEN;
-    UART2_CC_R   = 0;
-    UART2_IBRD_R = 43;
-    UART2_FBRD_R = 26;
-    UART2_LCRH_R = (3<<5);
-    UART2_CTL_R |= (UART_CTL_UARTEN | UART_CTL_RXE | UART_CTL_TXE);
+void UART2_Init(uint32_t baud) {
+  uint32_t brd, remainder;
+  
+  // Enable UART2 clock (bit 2) and wait until it is ready.
+  SYSCTL_RCGCUART_R |= 0x04;
+  while ((SYSCTL_PRUART_R & 0x04) == 0) {};
+  
+  // Enable clock for Port D (bit 3) and wait until ready.
+  SYSCTL_RCGCGPIO_R |= 0x08;
+  while ((SYSCTL_PRGPIO_R & 0x08) == 0) {};
+  
+  // Unlock PD7 for reconfiguration (PD7 is a locked NMI pin) and allow changes on PD7 and PD6.
+  GPIO_PORTD_LOCK_R = 0x4C4F434B;      // Unlock Port D
+  GPIO_PORTD_CR_R |= 0xC0;             // Commit PD6 and PD7
+  
+  // Disable analog functionality on PD6 and PD7.
+  GPIO_PORTD_AMSEL_R &= ~0xC0;
+  
+  // Enable alternate function on PD6 (U2Rx) and PD7 (U2Tx).
+  GPIO_PORTD_AFSEL_R |= 0xC0;
+  
+  // Set port control to assign PD6 and PD7 to UART2.
+  // Clear previous PCTL settings for these pins and set to 0x1 for UART.
+  GPIO_PORTD_PCTL_R = (GPIO_PORTD_PCTL_R & 0x00FFFFFF) | 0x11000000;
+  
+  // Enable digital functionality on PD6 and PD7.
+  GPIO_PORTD_DEN_R |= 0xC0;
+  
+  // Disable UART2 while configuring.
+  UART2_CTL_R &= ~UART_CTL_UARTEN;
+  
+  // Calculate baud rate divisor:
+  //   BRD = System Clock / (16 * baud)
+  brd = 80000000 / (16 * baud);
+  remainder = 80000000 % (16 * baud);
+  UART2_IBRD_R = brd;
+  UART2_FBRD_R = ((remainder * 64) + (baud / 2)) / baud;
+  
+  // Set line control for 8-bit, no parity, 1 stop bit, and enable FIFOs.
+  UART2_LCRH_R = (UART_LCRH_WLEN_8 | UART_LCRH_FEN);
+  
+  // Clear FIFO interrupt level fields (optional if not using interrupts).
+  UART2_IFLS_R &= ~0x3F;
+  
+  // Enable UART2.
+  UART2_CTL_R |= UART_CTL_UARTEN;
 }
 
 char UART2_RecvChar(void){
@@ -59,83 +85,96 @@ int main(void){
     DisableInterrupts();
     PLL_Init(Bus80MHz);
 //    PWM_PB6_Init();
-//    PWM_PD0_Init();
-//    PWM0_PD0_SetPeriod(25000);
-//    PWM0_PB6_SetPeriod(1600);
-//    PWM0_PB6_SetDuty(200);
+    PWM_PD0_Init();
+    PWM0_PD0_SetPeriod(25000);
+    PWM0_PB6_SetPeriod(1600);
+    PWM0_PB6_SetDuty(160);
     PortF_Init();
-    UART2_Init();
+    UART2_Init(115200);
     UART_Init();
     EnableInterrupts();
 
     UART_OutString("UART2 on PD6/PD7; receiving 3×12-bit values, averaging...\r\n");
 
     while(1){
-        // Only read when at least 6 bytes are available
-            char hi1 = UART2_RecvChar();
-            char lo1 = UART2_RecvChar();
-            char hi2 = UART2_RecvChar();
-            char lo2 = UART2_RecvChar();
-            char hi3 = UART2_RecvChar();
-            char lo3 = UART2_RecvChar();
+			PWM0_PB6_SetDuty(160);
+//        // Only read when at least 6 bytes are available
+//				// simpler: just try to read 6 times, but safe assume data comes in order
+//				// Read 3×(hi,lo)
+//			uint8_t lo1 = (uint8_t) UART2_RecvChar();	
+//			uint8_t hi1 = (uint8_t) UART2_RecvChar();
+////            char hi2 = UART2_RecvChar();
+////            char lo2 = UART2_RecvChar();
+////            char hi3 = UART2_RecvChar();
+////            char lo3 = UART2_RecvChar();
 
-            uint16_t v1 = ((((uint16_t)hi1)<<8)| (uint8_t)lo1) & 0x0FFF;
-            uint16_t v2 = ((((uint16_t)hi2)<<8)| (uint8_t)lo2) & 0x0FFF;
-            uint16_t v3 = ((((uint16_t)hi3)<<8)| (uint8_t)lo3) & 0x0FFF;
+//				uint16_t v1 = ((((uint16_t)hi1)<<8)| lo1) & 0x0FFF;
+////            uint16_t v2 = ((((uint16_t)hi2)<<8)| (uint8_t)lo2) & 0x0FFF;
+////            uint16_t v3 = ((((uint16_t)hi3)<<8)| (uint8_t)lo3) & 0x0FFF;
 
-            sum1 += v1;
-            sum2 += v2;
-            sum3 += v3;
-            count++;
+//				sum1 += v1;
+////            sum2 += v2;
+////            sum3 += v3;
+//				count++;
 
-            if(count >= AVG_SAMPLES){
-                // compute averages
-                uint16_t avg1 = sum1 / AVG_SAMPLES;
-                uint16_t avg2 = sum2 / AVG_SAMPLES;
-                uint16_t avg3 = sum3 / AVG_SAMPLES;
+//				if(count >= AVG_SAMPLES){
+//						// compute averages
+//						uint16_t avg1 = sum1 / AVG_SAMPLES;
+////                uint16_t avg2 = sum2 / AVG_SAMPLES;
+////                uint16_t avg3 = sum3 / AVG_SAMPLES;
 
-                // print averaged values
-                UART_OutString("Avg1="); UART_OutUDec(avg1);
-                UART_OutString("  Avg2="); UART_OutUDec(avg2);
-                UART_OutString("  Avg3="); UART_OutUDec(avg3);
-                UART_OutString("\r\n");
+//						// print averaged values
+//						UART_OutString("Avg1="); UART_OutUDec(avg1);
+////                UART_OutString("  Avg2="); UART_OutUDec(avg2);
+////                UART_OutString("  Avg3="); UART_OutUDec(avg3);
+//						UART_OutString("\r\n");
 
-                // update PWM outputs
-                uint32_t duty0 = 100 + (avg1 * 1900) / 4095;
-//								PWM0_PD0_Duty(duty0);
-                // 2350 -> 4095 (accelator adc, duty1), 2690 -> 4092 (brake adc, duty2)
-								uint32_t duty1 = avg2; 
-								uint32_t duty2 = avg3;
-                
-								if ((2350 < duty1 < 2550) && (duty2 < 2890)) { // accelator not pressed
-									if (motor_duty >= 10) {
-										motor_duty--;
-									}
-								} else if ((2550 < duty1 < 3500) && (duty2 < 2890)) { // accelarator not completely pressed
-									if (motor_duty <= 90) {
-										motor_duty += 2;
-									}
-								} else if ((duty1 >= 3500) && (duty2 < 2890)) { // floored that shit
-									if (motor_duty <= 90) {
-										motor_duty += 4;
-									}
-								}
-								
-								if (2890 < duty2 < 3500) {
-									if (motor_duty >= 10) {
-										motor_duty -= 2;
-									}
-								} else if (3500 <= duty2) {
-									if (motor_duty >= 10) {
-										motor_duty -= 4;
-									}
-								}
-								
-//                PWM0_PB6_SetDuty(motor_duty);
-
-                // reset accumulators
-                sum1 = sum2 = sum3 = 0;
-                count = 0;
-            }
+//						// update PWM outputs
+//						uint32_t duty0 = 100 + (avg1 * 1900) / 4095;
+//						//UART_OutUDec(duty0);
+//						PWM0_PD0_Duty(duty0);
+//						// 2350 -> 4095 (accelator adc, duty1), 2690 -> 4092 (brake adc, duty2)
+////						uint32_t duty1 = avg1; 
+////						if (2800 < duty1 < 3200) { // accelator not pressed
+////							if (motor_duty > 160) {
+////								motor_duty--;
+////							}
+////						} else if (3200 <= duty1) {
+////							if (motor_duty < 1280) {
+////								motor_duty++;
+////							}
+////						}
+//						
+////								uint32_t duty2 = avg3;
+////                
+////								if ((2350 < duty1 < 2550) && (duty2 < 2890)) { // accelator not pressed
+////									if (motor_duty >= 160) {
+////										motor_duty--;
+////									}
+////								} else if ((2550 < duty1 < 3500) && (duty2 < 2890)) { // accelarator not completely pressed
+////									if (motor_duty <= 1280) {
+////										motor_duty += 2;
+////									}
+////								} else if ((duty1 >= 3500) && (duty2 < 2890)) { // floored that shit
+////									if (motor_duty <= 1280) {
+////										motor_duty += 4;
+////									}
+////								}
+////								
+////								if (2890 < duty2 < 3500) {
+////									if (motor_duty >= 160) {
+////										motor_duty -= 2;
+////									}
+////								} else if (3500 <= duty2) {
+////									if (motor_duty >= 160) {
+////										motor_duty -= 4;
+////									}
+////								}
+//						
+////						PWM0_PB6_SetDuty(motor_duty);
+//						// reset accumulators
+//						sum1 = sum2 = sum3 = 0;
+//						count = 0;
+//				}
     }
 }

@@ -8,7 +8,6 @@
 ".\objects\adct0atrigger.o"
 ".\objects\uart.o"
 ".\objects\paddles.o"
-".\objects\uart2.o"
 ".\objects\timer2a.o"
 ".\objects\adc.o"
 --strict --scatter ".\Objects\Lab7BPrep.sct"

@@ -57,33 +57,34 @@ void loop(){
     // read in order: hi1, lo1, hi2, lo2, hi3, lo3
     uint8_t hi1 = Serial2.read();
     uint8_t lo1 = Serial2.read();
-    uint8_t hi2 = Serial2.read();
-    uint8_t lo2 = Serial2.read();
-    uint8_t hi3 = Serial2.read();
-    uint8_t lo3 = Serial2.read();
+    //uint8_t hi2 = Serial2.read();
+    //uint8_t lo2 = Serial2.read();
+    //uint8_t hi3 = Serial2.read();
+    //uint8_t lo3 = Serial2.read();
 
     // reconstruct and mask to 12 bits
     uint16_t v1 = (((uint16_t)hi1 << 8) | lo1) & 0x0FFF;
-    uint16_t v2 = (((uint16_t)hi2 << 8) | lo2) & 0x0FFF;
-    uint16_t v3 = (((uint16_t)hi3 << 8) | lo3) & 0x0FFF;
+    //uint16_t v2 = (((uint16_t)hi2 << 8) | lo2) & 0x0FFF;
+    //uint16_t v3 = (((uint16_t)hi3 << 8) | lo3) & 0x0FFF;
 
     sum1 += v1;
-    sum2 += v2;
-    sum3 += v3;
+    //sum2 += v2;
+    //sum3 += v3;
     count++;
   }
 
   if (count >= AVG_SAMPLES) {
     // compute the averages
     uint16_t avg1 = sum1 / AVG_SAMPLES;
-    uint16_t avg2 = sum2 / AVG_SAMPLES;
-    uint16_t avg3 = sum3 / AVG_SAMPLES;
+    //uint16_t avg2 = sum2 / AVG_SAMPLES;
+    //uint16_t avg3 = sum3 / AVG_SAMPLES;
 
     // print the averaged values
-    Serial.printf("Avg → ADC1=%u  ADC2=%u  ADC3=%u\n", avg1, avg2, avg3);
+    //Serial.printf("Avg → ADC1=%u  ADC2=%u  ADC3=%u\n", avg1, avg2, avg3);
+    Serial.printf("Avg → ADC1=%u\n", avg1);
 
     // pack and send them via ESP-NOW
-    data_pkt_t pkt = { avg1, avg2, avg3 };
+    data_pkt_t pkt = { avg1 };
     esp_now_send(peerMAC, (uint8_t*)&pkt, sizeof(pkt));
 
     // reset for next block of samples

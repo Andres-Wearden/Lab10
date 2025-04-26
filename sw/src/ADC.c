@@ -17,7 +17,7 @@ uint32_t adcValue3;
 
 
 void ProcessADCData(uint32_t data1, uint32_t data2, uint32_t data3) {
-    adcValue = data1;
-    adcValue2 = data2;
-    adcValue3 = data3;
+	adcValue = data1;
+	adcValue2 = data2;
+	adcValue3 = data3;
 }

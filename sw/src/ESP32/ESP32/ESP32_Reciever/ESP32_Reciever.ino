@@ -6,11 +6,9 @@
 #define UART2_RX_PIN 16
 #define UART2_TX_PIN 17
 
-// We expect three 12-bit values per packet:
+// Now only one 12-bit value per packet:
 typedef struct {
   uint16_t v1;
-  uint16_t v2;
-  uint16_t v3;
 } data_pkt_t;
 
 // Replace with your transmitter’s MAC
@@ -18,32 +16,27 @@ uint8_t peerMAC[6] = { 0x78, 0x42, 0x1C, 0x6D, 0xA6, 0xAC };
 
 void onDataRecv(const esp_now_recv_info_t* info,
                 const uint8_t* incomingData, int len) {
-  // sanity check packet length
+  // require exactly 2 bytes
   if (len != sizeof(data_pkt_t)) return;
 
-  // copy into our struct
+  // unpack
   data_pkt_t pkt;
   memcpy(&pkt, incomingData, sizeof(pkt));
 
   // mask to 12 bits
   uint16_t a1 = pkt.v1 & 0x0FFF;
-  uint16_t a2 = pkt.v2 & 0x0FFF;
-  uint16_t a3 = pkt.v3 & 0x0FFF;
 
-  // format MAC for printout
+  // print over USB-Serial
   char macStr[18];
   snprintf(macStr, sizeof(macStr),
            "%02X:%02X:%02X:%02X:%02X:%02X",
            info->src_addr[0], info->src_addr[1],
            info->src_addr[2], info->src_addr[3],
            info->src_addr[4], info->src_addr[5]);
+  Serial.printf("From %s → ADC1=%u\n", macStr, a1);
 
-  // 1) Print to USB-Serial
-  Serial.printf("From %s → ADC1=%u  ADC2=%u  ADC3=%u\n",
-                macStr, a1, a2, a3);
-
-  // 2) Forward raw struct over UART2 (GPIO17 TX)
-  Serial2.write((uint8_t*)&pkt, sizeof(pkt));
+  // forward the single 16-bit word (little-endian) over UART2
+  Serial2.write((uint8_t*)&a1, sizeof(a1));
 }
 
 void initEspNow() {
@@ -54,7 +47,7 @@ void initEspNow() {
   }
   esp_now_register_recv_cb(onDataRecv);
 
-  // Add peer (only needed if you plan to send back)
+  // (optional) add peer for bi-directional comms
   esp_now_peer_info_t peer = {};
   memcpy(peer.peer_addr, peerMAC, 6);
   peer.channel = 1;
@@ -64,14 +57,14 @@ void initEspNow() {
 
 void setup() {
   Serial.begin(115200);
-  // Bring up UART2 on GPIO16=RX, GPIO17=TX
+  // bring up UART2 on GPIO16=RX, GPIO17=TX
   Serial2.begin(115200, SERIAL_8N1, UART2_RX_PIN, UART2_TX_PIN);
 
   initEspNow();
-  Serial.println("ESP32 ready — forwarding 3×12-bit packets via UART2");
+  Serial.println("ESP32 ready — forwarding single 12-bit ADC via UART2");
 }
 
 void loop() {
-  // Nothing here; packets arrive in onDataRecv()
+  // nothing here; onDataRecv does the work
   delay(100);
 }

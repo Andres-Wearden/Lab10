@@ -441,11 +441,6 @@
               <FilePath>.\Paddles.h</FilePath>
             </File>
             <File>
-              <FileName>UART2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\inc\UART2.c</FilePath>
-            </File>
-            <File>
               <FileName>Timer2A.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\inc\Timer2A.c</FilePath>

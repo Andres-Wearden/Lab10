@@ -1,6 +1,6 @@
 Dependencies for Project 'Lab7BPrep', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
-F (.\main.c)(0x6809DD54)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/main.o -MD)
+F (.\main.c)(0x680AD9DD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/main.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
 I (..\inc\tm4c123gh6pm.h)(0x67D32611)
 I (..\inc\PLL.h)(0x67B4E952)
@@ -27,7 +27,7 @@ F (..\inc\startup.s)(0x67B4E952)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfp
 F (..\inc\Timer1A.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/timer1a.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
 I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
-F (..\inc\ADCT0ATrigger.c)(0x6809CE2C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/adct0atrigger.o -MD)
+F (..\inc\ADCT0ATrigger.c)(0x680A68CD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/adct0atrigger.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
 I (..\inc\..\inc\CortexM.h)(0x67B4E952)
 I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
@@ -38,9 +38,6 @@ I (..\inc\..\inc\UART.h)(0x67B4E952)
 I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
 F (.\Paddles.c)(0x67E2C4FF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/paddles.o -MD)
 F (.\Paddles.h)(0x67E2C6D4)()
-F (..\inc\UART2.c)(0x68084077)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/uart2.o -MD)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
-I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)
 F (..\inc\Timer2A.c)(0x67B4E952)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -w --std=c99 -Wno-c11-extensions-I./RTE/_Target_1-IC:/Users/anesw/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/anesw/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-D__UVISION_VERSION="538" -D_RTE_ -DTM4C123GH6PM -D_RTE_-o ./objects/timer2a.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63890DE8)
 I (..\inc\..\inc\tm4c123gh6pm.h)(0x67D32611)

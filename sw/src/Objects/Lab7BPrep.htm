@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Lab7BPrep.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Lab7BPrep.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Thu Apr 24 01:42:30 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Thu Apr 24 19:39:59 2025
 <BR><P>
-<H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        152 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; ADC0_InitTimer0ATriggerSeq0
 <P>
@@ -659,7 +659,7 @@ Global Symbols
 <P><STRONG><a name="[be]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[8a]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; ADC0_InitTimer0ATriggerSeq0
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -792,12 +792,6 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9d]"></a>UART1_Send16</STRONG> (Thumb, 82 bytes, Stack size 4 bytes, main.o(.text.UART1_Send16))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = UART1_Send16
-</UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
 <P><STRONG><a name="[9a]"></a>UART_Init</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, uart.o(.text.UART_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -833,8 +827,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> adct0atrigger.o(.text.ADC0_InitTimer0ATriggerSeq0)
 </UL>
-<P><STRONG><a name="[8b]"></a>main</STRONG> (Thumb, 266 bytes, Stack size 48 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<P><STRONG><a name="[8b]"></a>main</STRONG> (Thumb, 448 bytes, Stack size 120 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = main &rArr; ADC0_InitTimer0ATriggerSeq0
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_OutUDec
@@ -844,8 +838,8 @@ Global Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC0_InitTimer0ATriggerSeq0
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1_Send16
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -861,6 +855,12 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
+<P><STRONG><a name="[9d]"></a>sqrt2</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, main.o(.text.sqrt2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = sqrt2
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(RESET))
 <BR><BR>[Calls]<UL><LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NMI_Handler
 </UL>
